@@ -8,11 +8,10 @@ const Index = () => {
 
   return (
     <View style={styles.container}>
-      {subjects.map(subject => (
-        <SubjectCard subject={subject}/>
-      ))}
-      <Text style={styles.title}>Subjects</Text>
-      <View style={styles.separator}/>
+      {!subjects.length ? <Text style={styles.title}>Add subjects</Text> :
+        subjects.map(subject => (
+          <SubjectCard key={subject.id} subject={subject}/>
+        ))}
     </View>
   );
 }

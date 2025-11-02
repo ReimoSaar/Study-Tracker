@@ -1,10 +1,21 @@
 import { StyleSheet, View, Text } from 'react-native';
+import { useStudyContext } from "@/context/StudyContext";
 
 const StudySessions = () => {
+  const {subjects, studySessions} = useStudyContext();
+
+  const InitialMessage = (): React.ReactElement => {
+    if (!subjects.length) {
+      return <Text style={styles.title}>Add subjects</Text>
+    } else if (!studySessions.length) {
+      return <Text style={styles.title}>Add study sessions</Text>
+    }
+    return <></>
+  }
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab Two</Text>
-      <View style={styles.separator} />
+      <InitialMessage/>
     </View>
   );
 }

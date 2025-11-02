@@ -10,7 +10,7 @@ const SubjectCard = ({subject}: IProps) => {
   return (
     <View style={styles.container}>
       <Text>{subject.name}</Text>
-      <Button title={"EDit"} color={"#393e9c"} />
+      <Button title={"Edit"} color={"#393e9c"} />
     </View>
   )
 }

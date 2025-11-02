@@ -5,6 +5,8 @@ import { Pressable } from 'react-native';
 
 import Colors from '@/constants/Colors';
 import AddButton from "@/components/AddButton";
+import { SESSION_ADD_MODAL_ROUTE, SUBJECT_ADD_MODAL_ROUTE } from "@/constants/Routes";
+import { useStudyContext } from "@/context/StudyContext";
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props: {
@@ -17,8 +19,8 @@ function TabBarIcon(props: {
 const TabLayout = () => {
   const SUBJECTS_NAME = "index"
   const STUDY_SESSIONS_NAME = "study-sessions"
-  const SUBJECT_ADD_MODAL_ROUTE = "/subject-add-modal"
-  const SESSION_ADD_MODAL_ROUTE = "/study-session-add-modal"
+
+  const {subjects} = useStudyContext();
 
   return (
     <Tabs
@@ -32,7 +34,7 @@ const TabLayout = () => {
           title: 'Subjects',
           tabBarIcon: ({color}) => <TabBarIcon name="code" color={color}/>,
           headerRight: () => (
-            <AddButton href={SUBJECT_ADD_MODAL_ROUTE} />
+            <AddButton href={SUBJECT_ADD_MODAL_ROUTE}/>
           ),
         }}
       />
@@ -42,7 +44,7 @@ const TabLayout = () => {
           title: 'Study sessions',
           tabBarIcon: ({color}) => <TabBarIcon name="code" color={color}/>,
           headerRight: () => (
-            <AddButton href={SESSION_ADD_MODAL_ROUTE} />
+            <AddButton href={SESSION_ADD_MODAL_ROUTE} disabled={!subjects.length}/>
           ),
         }}
       />
