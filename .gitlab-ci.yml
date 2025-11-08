@@ -1,0 +1,44 @@
+# DO NOT EDIT ANYTHING
+image: reactnativecommunity/react-native-android:latest
+
+stages:
+  - build
+
+variables:
+  ANDROID_SDK_ROOT: /opt/android-sdk
+  GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.parallel=true -Dorg.gradle.caching=true"
+
+cache:
+  key:
+    files:
+      - package-lock.json
+  paths:
+    - node_modules/
+    - .npm/
+    - android/.gradle/
+    - android/build/
+
+build_apk:
+  when: manual
+  stage: build
+  before_script:
+    - node --version
+    - npm --version
+    - npm config set cache .npm --global
+    - npm ci --prefer-offline
+  script:
+    - npx expo prebuild --platform android --clean
+
+    - cd android
+    - chmod +x ./gradlew
+    - ./gradlew assembleRelease --build-cache --configure-on-demand --parallel --max-workers=4
+    - mkdir -p artifacts
+    - mv app/build/outputs/apk/release/app-release.apk artifacts/app-debug.apk
+    - |
+      curl -X POST --location "https://testlab.taltech.ee/api/v1/startTest" \
+        -F "platform=android" \
+        -F "reportType=screenshot" \
+        -F "apk=@artifacts/app-debug.apk" \
+        -F "email=${GITLAB_USER_EMAIL}" \
+        -F "repositoryName=${CI_PROJECT_NAME}" \
+        -F "ignoredIds=R5CT83D4BHN, 98311FFAZ0025S"
