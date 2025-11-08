@@ -42,6 +42,9 @@ export const StudyProvider = ({children}: IProvider) => {
   }
 
   const removeSubject = (id: string) => {
+    setStudySessions(currentStudySessions => {
+      return currentStudySessions.filter((studySession) => studySession.subjectId !== id);
+    })
     setSubjects(currentSubjects => {
       return currentSubjects.filter((subject) => subject.id !== id);
     })

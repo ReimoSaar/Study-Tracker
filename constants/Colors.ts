@@ -4,6 +4,7 @@ export const SUCCESS_COLOR = "#05bf00"
 export const SUCCESS_DISABLED_COLOR = "#a6caa6"
 export const ERROR_COLOR = "#ff1717"
 export const PRIMARY_COLOR = "#009dff"
+export const YELLOW_COLOR = "#fff300"
 
 export default {
   light: {

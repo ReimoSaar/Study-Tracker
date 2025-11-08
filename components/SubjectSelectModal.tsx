@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useStudyContext } from "@/context/StudyContext";
 import ISubject from "@/types/subject";
 import { formStyle } from "@/styles/Styles";
-import { SUCCESS_COLOR, SUCCESS_DISABLED_COLOR } from "@/constants/Colors";
+import { SUCCESS_COLOR, SUCCESS_DISABLED_COLOR, YELLOW_COLOR } from "@/constants/Colors";
 
 interface IProps {
   existingSubject: ISubject | null,
@@ -62,7 +62,7 @@ const SubjectSelectModal = ({existingSubject, visible, onSelect, onCancel}: IPro
                   style={[
                     formStyle.submitButtonText,
                     {
-                      backgroundColor: "#fff300",
+                      backgroundColor: YELLOW_COLOR,
                       color: "#000"
                     }
                   ]}>Cancel</Text>

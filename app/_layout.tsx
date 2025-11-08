@@ -46,8 +46,8 @@ export default function RootLayout() {
 
 function RootLayoutNav() {
   const TABS_PATH = "(tabs)"
-  const SUBJECT_ADD_MODAL_NAME = "subject-add-modal"
-  const STUDY_SESSION_ADD_MODAL_NAME = "study-session-add-modal"
+  const SUBJECT_ADD_MODAL_NAME = "subject-add-view"
+  const STUDY_SESSION_ADD_MODAL_NAME = "study-session-add-view"
 
   return (
     <ThemeProvider value={DefaultTheme}>

@@ -1,5 +1,8 @@
-import { StyleSheet, View, Text } from 'react-native';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { useStudyContext } from "@/context/StudyContext";
+import React from "react";
+import StudySessionCard from "@/components/StudySessionCard";
+import IStudySession from "@/types/study-session";
 
 const StudySessions = () => {
   const {subjects, studySessions} = useStudyContext();
@@ -16,6 +19,20 @@ const StudySessions = () => {
   return (
     <View style={styles.container}>
       <InitialMessage/>
+      {studySessions.length ? <FlatList
+        style={styles.studySessionsList}
+        data={studySessions}
+        keyExtractor={(item) => item.id}
+        ItemSeparatorComponent={() => <View style={{height: 20}} />}
+        renderItem={
+          (itemData) => {
+            const s: IStudySession = itemData.item;
+            return (
+              <StudySessionCard key={s.id} studySession={s} showSubject={true}/>
+            )
+          }
+        }
+      /> : <></>}
     </View>
   );
 }
@@ -30,11 +47,9 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
   },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
-  },
+  studySessionsList: {
+    width: "90%"
+  }
 });
 
 export default StudySessions;

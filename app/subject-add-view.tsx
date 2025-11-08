@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useRouter } from "expo-router";
 import { formStyle } from "@/styles/Styles";
 
-const SubjectAddModal = () => {
+const SubjectAddView = () => {
   const {addSubject} = useStudyContext();
   const [name, setName] = useState<string>("");
   const [weeklyGoal, setWeeklyGoal] = useState<number>(0);
@@ -32,7 +32,7 @@ const SubjectAddModal = () => {
       isError = true;
       setWeeklyGoalError("Weekly goal must be greater than 0!")
     }
-    if (weeklyGoal > 169) {
+    if (weeklyGoal > 168) {
       isError = true;
       setWeeklyGoalError("Weekly goal must be smaller than 169!")
     }
@@ -74,7 +74,7 @@ const SubjectAddModal = () => {
   );
 }
 
-export default SubjectAddModal
+export default SubjectAddView
 
 const styles = StyleSheet.create({
   container: {

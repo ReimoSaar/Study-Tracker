@@ -4,13 +4,12 @@ import React, { useState } from "react";
 import { useRouter } from "expo-router";
 import { formStyle } from "@/styles/Styles";
 import RNDateTimePicker, { DateTimePickerEvent } from "@react-native-community/datetimepicker";
-import { PRIMARY_COLOR, SUCCESS_COLOR } from "@/constants/Colors";
-import { RadioButton } from "react-native-paper";
+import { PRIMARY_COLOR } from "@/constants/Colors";
 import ISubject from "@/types/subject";
 import SubjectSelectModal from "@/components/SubjectSelectModal";
 import { formatDate } from "@/helper/date-helper";
 
-const StudySessionAddModal = () => {
+const StudySessionAddView = () => {
   const {addStudySession, subjects} = useStudyContext();
   const [date, setDate] = useState<Date | null>(null)
   const [duration, setDuration] = useState<number>(0);
@@ -76,9 +75,9 @@ const StudySessionAddModal = () => {
       isError = true;
       setDurationError("Duration must be greater than 0!")
     }
-    if (duration > 169) {
+    if (duration > 10080) {
       isError = true;
-      setDurationError("Duration must be smaller than 169!")
+      setDurationError("Duration must be smaller than 10081!")
     }
     return isError;
   }
@@ -91,10 +90,10 @@ const StudySessionAddModal = () => {
     addStudySession({
       id: Math.random().toString(),
       createdAt: Date.now().toLocaleString(),
-      date: "",
-      duration: 0,
-      note: "",
-      subjectId: "",
+      date: date!.toISOString(),
+      duration: duration,
+      note: note,
+      subjectId: subject!.id,
     });
     router.back();
   }
@@ -136,7 +135,7 @@ const StudySessionAddModal = () => {
   );
 }
 
-export default StudySessionAddModal
+export default StudySessionAddView
 
 const styles = StyleSheet.create({
   container: {
