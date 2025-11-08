@@ -59,7 +59,7 @@ const SubjectCard = ({subject, weekOffset}: IProps) => {
   console.log(calculateCompletion());
 
   return (
-    <View style={styles.card}>
+    <View style={[styles.card, {backgroundColor: subject.color}]}>
       <View style={styles.mainElements}>
         <Pressable onPressOut={toggleSetShowSession}>
           {showSessions ?
@@ -80,7 +80,7 @@ const SubjectCard = ({subject, weekOffset}: IProps) => {
         {showSessions ?
           filteredStudySessions.map(s => {
             return (
-              <StudySessionCard studySession={s} showSubject={false} />
+              <StudySessionCard key={s.id} studySession={s} showSubject={false} />
             )
           }) : <></>
         }
@@ -96,7 +96,6 @@ const SubjectCard = ({subject, weekOffset}: IProps) => {
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: "#7bc4ff",
     borderRadius: 20,
     padding: 5
   },

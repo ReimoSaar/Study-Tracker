@@ -32,9 +32,9 @@ const StudySessionCard = ({studySession, showSubject}: IProps) => {
 
 
   return (
-    <View style={styles.card}>
+    <View style={[styles.card, {borderColor: subject.color}]}>
       <View style={styles.cardTextContainer}>
-        {showSubject ? <Text style={styles.subjectName}>{subject.name}</Text> : <></>}
+        {showSubject ? <Text style={[styles.subjectName, {backgroundColor: subject.color}]}>{subject.name}</Text> : <></>}
         <View style={styles.textPair}>
           <Text style={styles.keyText}>Date: </Text>
           <Text style={styles.valueText}>{formatDate(new Date(studySession.date))}</Text>
@@ -59,9 +59,9 @@ const StudySessionCard = ({studySession, showSubject}: IProps) => {
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: "#e9f5ff",
+    backgroundColor: "#ffffff",
     borderStyle: "solid",
-    borderWidth: 1,
+    borderWidth: 4,
     padding: 10,
     flexDirection: "row"
   },
@@ -81,7 +81,6 @@ const styles = StyleSheet.create({
   },
   subjectName: {
     fontSize: 24,
-    backgroundColor: "#ffc400",
     alignSelf: "flex-start",
     borderRadius: 20,
     padding: 10

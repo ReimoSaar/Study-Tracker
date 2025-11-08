@@ -32,7 +32,7 @@ const TabLayout = () => {
         name={SUBJECTS_NAME}
         options={{
           title: 'Subjects',
-          tabBarIcon: ({color}) => <TabBarIcon name="code" color={color}/>,
+          tabBarIcon: ({color}) => <TabBarIcon name="book" color={color}/>,
           headerRight: () => (
             <AddButton href={SUBJECT_ADD_MODAL_ROUTE}/>
           ),
@@ -42,7 +42,7 @@ const TabLayout = () => {
         name={STUDY_SESSIONS_NAME}
         options={{
           title: 'Study sessions',
-          tabBarIcon: ({color}) => <TabBarIcon name="code" color={color}/>,
+          tabBarIcon: ({color}) => <TabBarIcon name="pencil" color={color}/>,
           headerRight: () => (
             <AddButton href={SESSION_ADD_MODAL_ROUTE} disabled={!subjects.length}/>
           ),

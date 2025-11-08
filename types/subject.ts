@@ -1,8 +1,9 @@
 interface ISubject {
   id: string;
   name: string;
-  weeklyGoal: number;  // in hours
-  createdAt: string;   // ISO date string
+  color: string;
+  weeklyGoal: number;
+  createdAt: string;
 }
 
 export default ISubject;

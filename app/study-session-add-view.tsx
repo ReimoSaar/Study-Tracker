@@ -11,7 +11,7 @@ import { formatDate } from "@/helper/date-helper";
 
 const StudySessionAddView = () => {
   const {addStudySession, subjects} = useStudyContext();
-  const [date, setDate] = useState<Date | null>(null)
+  const [date, setDate] = useState<Date>(new Date())
   const [duration, setDuration] = useState<number>(0);
   const [note, setNote] = useState<string>("");
   const [subject, setSubject] = useState<ISubject | null>(null);
@@ -40,7 +40,7 @@ const StudySessionAddView = () => {
 
   const setDateHandler = (event: DateTimePickerEvent, date: Date | undefined) => {
     if (event.type == "set") {
-      setDate(date ?? null);
+      setDate(date!);
     }
     closeDatePickerHandler();
   };
