@@ -1,6 +1,7 @@
 import { Modal, Pressable, StyleSheet, Text, View } from "react-native";
 import { SUCCESS_COLOR, YELLOW_COLOR } from "@/constants/Colors";
 import React from "react";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 interface IProps {
   textContent: string,
@@ -12,28 +13,30 @@ interface IProps {
 const ConfirmModal = ({textContent, visible, onConfirm, onCancel}: IProps) => {
   return (
     <Modal visible={visible} animationType={"slide"}>
-      <View style={styles.modalInner}>
-        <View style={styles.content}>
-          <Text style={styles.title}>{textContent}</Text>
-          <View style={styles.buttons}>
-            <Pressable onPressOut={onCancel}>
-              {() => (
-                <Text
-                  style={[
-                    styles.buttonInner,
-                    styles.cancelButton
-                  ]}>Cancel</Text>
-              )}
-            </Pressable>
-            <Pressable onPressOut={onConfirm}>
-              {() => (
-                <Text
-                  style={styles.buttonInner}>Confirm</Text>
-              )}
-            </Pressable>
+      <SafeAreaView>
+        <View style={styles.modalInner}>
+          <View style={styles.content}>
+            <Text style={styles.title}>{textContent}</Text>
+            <View style={styles.buttons}>
+              <Pressable onPressOut={onCancel}>
+                {() => (
+                  <Text
+                    style={[
+                      styles.buttonInner,
+                      styles.cancelButton
+                    ]}>Cancel</Text>
+                )}
+              </Pressable>
+              <Pressable onPressOut={onConfirm}>
+                {() => (
+                  <Text
+                    style={styles.buttonInner}>Confirm</Text>
+                )}
+              </Pressable>
+            </View>
           </View>
         </View>
-      </View>
+      </SafeAreaView>
     </Modal>
   )
 }

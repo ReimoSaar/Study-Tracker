@@ -7,23 +7,21 @@ interface IProps {
   onColorSelected: (color: string) => void;
 }
 
-const ColorPicker = ({onColorSelected, selectedColor, colors}: IProps) => {
-
-  return (
-    <View style={styles.colorPicker}>
-      {colors.map(color =>
-        <Pressable
-          style={[
-            styles.color,
-            {backgroundColor: color},
-            color === selectedColor && styles.selected
-          ]}
-          onPressOut={() => onColorSelected(color)}
-        />
-      )}
-    </View>
-  )
-}
+const ColorPicker = ({onColorSelected, selectedColor, colors}: IProps) => (
+  <View style={styles.colorPicker}>
+    {colors.map((color, i) =>
+      <Pressable
+        key={i}
+        style={[
+          styles.color,
+          {backgroundColor: color},
+          color === selectedColor && styles.selected
+        ]}
+        onPressOut={() => onColorSelected(color)}
+      />
+    )}
+  </View>
+)
 
 const styles = StyleSheet.create({
   colorPicker: {
