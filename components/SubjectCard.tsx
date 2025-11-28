@@ -73,7 +73,7 @@ const SubjectCard = ({subject, weekOffset}: IProps) => {
         </Pressable>
       </View>
       <View style={styles.progression}>
-        <Text style={styles.minutesStudiedText}>{calculateMinutesStudied()} of {subject.weeklyGoal * 60} minutes studied</Text>
+        <Text style={styles.minutesStudiedText}>{calculateMinutesStudied()} of {subject.weeklyGoal * 60} minutes studied ({Math.floor(calculateCompletion() * 100)}%)</Text>
         <ProgressBar progress={calculateCompletion()} />
       </View>
       <View>
