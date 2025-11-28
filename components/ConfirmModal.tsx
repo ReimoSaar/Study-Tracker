@@ -12,7 +12,7 @@ interface IProps {
 
 const ConfirmModal = ({textContent, visible, onConfirm, onCancel}: IProps) => {
   return (
-    <Modal visible={visible} animationType={"slide"}>
+    <Modal visible={visible} animationType={"slide"} supportedOrientations={["portrait", "landscape"]}>
       <SafeAreaView>
         <View style={styles.modalInner}>
           <View style={styles.content}>

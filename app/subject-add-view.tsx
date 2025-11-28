@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useStudyContext } from "@/context/StudyContext";
 import React, { useState } from "react";
 import { useRouter } from "expo-router";
@@ -63,7 +63,7 @@ const SubjectAddView = () => {
   }
 
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <View style={formStyle.form}>
         <Text style={formStyle.label}>Color</Text>
         <ColorPicker colors={colors} selectedColor={color} onColorSelected={setColorHandler} />
@@ -81,7 +81,7 @@ const SubjectAddView = () => {
           )}
         </Pressable>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 

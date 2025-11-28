@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useStudyContext } from "@/context/StudyContext";
 import React, { useState } from "react";
 import { useRouter } from "expo-router";
@@ -99,7 +99,7 @@ const StudySessionAddView = () => {
   }
 
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <View style={formStyle.form}>
         <Text style={formStyle.label}>Subject</Text>
         {subjectError ? <Text style={formStyle.errorMessage}>{subjectError}</Text> : <></>}
@@ -131,7 +131,7 @@ const StudySessionAddView = () => {
                             onSelect={setSubjectHandler}
                             onCancel={closeSubjectSelectModal}/>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 

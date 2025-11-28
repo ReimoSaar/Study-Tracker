@@ -31,7 +31,7 @@ const SubjectSelectModal = ({existingSubject, visible, onSelect, onCancel}: IPro
   }
 
   return (
-    <Modal visible={visible} style={styles.modal} animationType={"slide"}>
+    <Modal visible={visible} style={styles.modal} animationType={"slide"} supportedOrientations={["portrait", "landscape"]}>
       <SafeAreaView>
         <View style={styles.modalInner}>
           <View style={[formStyle.form, {height: "100%"}]}>
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     marginLeft: "auto",
     gap: 10,
-    flex: 1,
+    marginBottom: 10,
     marginTop: "auto"
   },
   subjectRow: {
