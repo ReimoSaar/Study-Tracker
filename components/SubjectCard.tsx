@@ -25,7 +25,7 @@ const SubjectCard = ({subject, weekOffset}: IProps) => {
     .filter(s => {
       const subjectDate = new Date(s.date);
       return subjectDate.getTime() >= dateRange.dateFrom.getTime()
-      && subjectDate.getTime() <= dateRange.dateTo.getTime();
+        && subjectDate.getTime() <= dateRange.dateTo.getTime();
     });
 
   const closeDeleteModal = () => {
@@ -73,14 +73,15 @@ const SubjectCard = ({subject, weekOffset}: IProps) => {
         </Pressable>
       </View>
       <View style={styles.progression}>
-        <Text style={styles.minutesStudiedText}>{calculateMinutesStudied()} of {subject.weeklyGoal * 60} minutes studied ({Math.floor(calculateCompletion() * 100)}%)</Text>
-        <ProgressBar progress={calculateCompletion()} />
+        <Text style={styles.minutesStudiedText}>{calculateMinutesStudied()} of {subject.weeklyGoal * 60} minutes studied
+          ({Math.floor(calculateCompletion() * 100)}%)</Text>
+        <ProgressBar progress={calculateCompletion()}/>
       </View>
       <View>
         {showSessions ?
           filteredStudySessions.map(s => {
             return (
-              <StudySessionCard key={s.id} studySession={s} showSubject={false} />
+              <StudySessionCard key={s.id} studySession={s} showSubject={false}/>
             )
           }) : <></>
         }

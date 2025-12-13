@@ -10,7 +10,7 @@ import SubjectSelectModal from "@/components/SubjectSelectModal";
 import { formatDate } from "@/helper/date-helper";
 
 const StudySessionAddView = () => {
-  const {addStudySession, subjects} = useStudyContext();
+  const {addStudySession} = useStudyContext();
   const [date, setDate] = useState<Date>(new Date())
   const [duration, setDuration] = useState<number>(0);
   const [note, setNote] = useState<string>("");
